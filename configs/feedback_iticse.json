@@ -1,0 +1,17 @@
+{
+    "name": "feedback_iticse",
+    "code_dir": "",
+    "save_dir": "",
+    "grids":
+    [
+        {
+            "model": [
+                "zephyr_beta", "codellama-7b",
+                "codellama-13b", "codellama-34b",
+                "gpt-3.5-turbo", "gpt-4", "zephyr_alpha"],
+            "dataset": ["icer"],
+            "task": ["zero_shot_feedback"],
+            "hyperparameters": ["default"]
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+{
+    "name": "grading_iticse",
+    "code_dir": "",
+    "save_dir": "",
+    "grids":
+    [
+        {
+            "model": ["gpt-4"],
+            "dataset": ["icer"],
+            "task": ["zero_shot_grading"],
+            "hyperparameters": ["default"]
+        }
+    ]
+}

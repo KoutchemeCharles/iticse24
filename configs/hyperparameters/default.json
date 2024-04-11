@@ -1,0 +1,9 @@
+{
+    "name": "default",
+    "params": {   
+            "n": 1,
+            "top_p": 1.0,
+            "temperature": 0.0,
+            "max_tokens": 1024
+    }
+}

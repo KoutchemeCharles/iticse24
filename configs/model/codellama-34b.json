@@ -1,0 +1,8 @@
+{
+    "source": "huggingface",
+    "name": "codellama/CodeLlama-34b-Instruct-hf",
+    "is_chat": true,
+    "instantiation": {
+        "torch_dtype": "torch.float16"
+    }
+}

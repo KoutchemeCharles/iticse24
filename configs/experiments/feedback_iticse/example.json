@@ -1,0 +1,78 @@
+{
+    "name": "codellama-7b_zero_shot_feedback_search_icer",
+    "save_dir": "TO_SPECIFY",
+    "agent": {
+        "source": "huggingface",
+        "name": "codellama/CodeLlama-7b-Instruct-hf",
+        "is_chat": true,
+        "instantiation": {
+            "torch_dtype": "torch.float16"
+        }
+    },
+    "dataset": {
+        "name": "icer",
+        "path": "NOT PROVIDED"
+    },
+    "task": {
+        "name": "zero_shot_feedback",
+        "task": "feedback",
+        "type": "zero_shot",
+        "n_shots": 0,
+        "strategy": {
+            "from_same_problem": true
+        },
+        "instructions": [
+            {
+                "role": "system",
+                "content": "You are a computer science professor teaching introductory programming using Dart."
+            },
+            {
+                "role": "user",
+                "content": "Below is a problem description accompanied by an example solution. You are also provided with an incorrect program (i.e. it does not pass all unit tests) written by a student. Your task is to provide suggestions on how the student could fix their code so that it fulfils all the requirements in the problem description. Your suggestions should only improve the functional correctness of the incorrect program, so you can leave stylistic suggestions aside. Do not include code in your feedback.\n## Problem description:\n{handout}\n## Model solution:\n{sample_solution}\n## Student Code:\n{submitted_code}\n## Feedback:\n"
+            }
+        ],
+        "scoring": {
+            "type": "llm_judge",
+            "task": "../configs/task/zero_shot_grading.json",
+            "model": "../configs/model/gpt-4.json",
+            "hyperparameters": "../configs/hyperparameters/default.json"
+        }
+    },
+    "hyperparameters": {
+        "name": "search",
+        "grids": [
+            {
+                "n": [
+                    1
+                ],
+                "top_p": [
+                    0.9,
+                    0.95,
+                    1.0
+                ],
+                "temperature": [
+                    0.2,
+                    0.5
+                ],
+                "max_tokens": [
+                    1024
+                ]
+            },
+            {
+                "n": [
+                    1
+                ],
+                "top_p": [
+                    1.0
+                ],
+                "temperature": [
+                    0.0
+                ],
+                "max_tokens": [
+                    1024
+                ]
+            }
+        ]
+    },
+    "seed": 32
+}
